@@ -1,0 +1,11 @@
+C:\Users\owner\Desktop\GitHub\RocketModPlugins\RocketModInventorySaving\InventorySaving\InventorySaving\bin\Debug\InventorySaving.dll
+C:\Users\owner\Desktop\GitHub\RocketModPlugins\RocketModInventorySaving\InventorySaving\InventorySaving\bin\Debug\InventorySaving.pdb
+C:\Users\owner\Desktop\GitHub\RocketModPlugins\RocketModInventorySaving\InventorySaving\InventorySaving\bin\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\owner\Desktop\GitHub\RocketModPlugins\RocketModInventorySaving\InventorySaving\InventorySaving\bin\Debug\Assembly-CSharp.dll
+C:\Users\owner\Desktop\GitHub\RocketModPlugins\RocketModInventorySaving\InventorySaving\InventorySaving\bin\Debug\Rocket.API.dll
+C:\Users\owner\Desktop\GitHub\RocketModPlugins\RocketModInventorySaving\InventorySaving\InventorySaving\bin\Debug\Rocket.Core.dll
+C:\Users\owner\Desktop\GitHub\RocketModPlugins\RocketModInventorySaving\InventorySaving\InventorySaving\bin\Debug\Rocket.Unturned.dll
+C:\Users\owner\Desktop\GitHub\RocketModPlugins\RocketModInventorySaving\InventorySaving\InventorySaving\bin\Debug\UnityEngine.dll
+C:\Users\owner\Desktop\GitHub\RocketModPlugins\RocketModInventorySaving\InventorySaving\InventorySaving\obj\Debug\InventorySaving.csprojResolveAssemblyReference.cache
+C:\Users\owner\Desktop\GitHub\RocketModPlugins\RocketModInventorySaving\InventorySaving\InventorySaving\obj\Debug\InventorySaving.dll
+C:\Users\owner\Desktop\GitHub\RocketModPlugins\RocketModInventorySaving\InventorySaving\InventorySaving\obj\Debug\InventorySaving.pdb
