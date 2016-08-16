@@ -56,6 +56,11 @@ namespace InventorySaving
                     UnturnedChat.Say(caller, "You have not done /inv save yet!");
                 }
             }
+            else
+            {
+                UnturnedChat.Say(caller, "Incorrect command usage, Correct usage: /inv [ save | load ]");
+                return;
+            }
         }
 
         public string Help

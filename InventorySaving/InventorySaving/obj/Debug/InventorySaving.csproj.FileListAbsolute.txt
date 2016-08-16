@@ -6,6 +6,6 @@ C:\Users\owner\Desktop\GitHub\RocketModPlugins\RocketModInventorySaving\Inventor
 C:\Users\owner\Desktop\GitHub\RocketModPlugins\RocketModInventorySaving\InventorySaving\InventorySaving\bin\Debug\Rocket.Core.dll
 C:\Users\owner\Desktop\GitHub\RocketModPlugins\RocketModInventorySaving\InventorySaving\InventorySaving\bin\Debug\Rocket.Unturned.dll
 C:\Users\owner\Desktop\GitHub\RocketModPlugins\RocketModInventorySaving\InventorySaving\InventorySaving\bin\Debug\UnityEngine.dll
-C:\Users\owner\Desktop\GitHub\RocketModPlugins\RocketModInventorySaving\InventorySaving\InventorySaving\obj\Debug\InventorySaving.csprojResolveAssemblyReference.cache
 C:\Users\owner\Desktop\GitHub\RocketModPlugins\RocketModInventorySaving\InventorySaving\InventorySaving\obj\Debug\InventorySaving.dll
 C:\Users\owner\Desktop\GitHub\RocketModPlugins\RocketModInventorySaving\InventorySaving\InventorySaving\obj\Debug\InventorySaving.pdb
+C:\Users\owner\Desktop\GitHub\RocketModPlugins\RocketModInventorySaving\InventorySaving\InventorySaving\obj\Debug\InventorySaving.csprojResolveAssemblyReference.cache

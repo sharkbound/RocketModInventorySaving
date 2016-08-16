@@ -9,6 +9,9 @@ using Rocket.Unturned.Player;
 using Steamworks;
 using SDG.Unturned;
 using Rocket.Core.Plugins;
+using Rocket.Unturned.Items;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace InventorySaving
 {
@@ -29,8 +32,8 @@ namespace InventorySaving
 
     public class Weapons
     {
-        public Item Slot1 = null;
-        public Item Slot2 = null;
+        public Item Slot1;
+        public Item Slot2;
         ItemJar slot1;
         ItemJar slot2;
 
@@ -39,8 +42,8 @@ namespace InventorySaving
             Weapons w = new Weapons();
             w.slot1 = player.Player.inventory.getItem(0, 0);
             w.slot2 = player.Player.inventory.getItem(1, 0);
-            w.Slot1 = new Item(slot1.item.ItemID, 1, 100, slot1.Item.Metadata);
-            w.Slot2 = new Item(slot2.item.ItemID, 1, 100, slot2.Item.Metadata);
+            w.Slot1 = new Item(w.slot1.Item.ItemID, 1, 100, (byte[])((object)w.slot1.Item.Metadata).DeepClone());
+            w.Slot2 = new Item(w.slot2.Item.ItemID, 1, 100, (byte[])((object)w.slot2.Item.Metadata).DeepClone());
 
             if (!Plugin.SavedWeapons.ContainsKey(player.CSteamID))
             {
@@ -83,5 +86,20 @@ namespace InventorySaving
             metadata[16] = barrel durability
             metadata[17] = magazine durability
         */
+    }
+
+    public static class ExtensionMethods
+    {
+        // Deep clone
+        public static T DeepClone<T>(this T a)
+        {
+            using (MemoryStream stream = new MemoryStream())
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(stream, a);
+                stream.Position = 0;
+                return (T)formatter.Deserialize(stream);
+            }
+        }
     }
 }
