@@ -42,8 +42,15 @@ namespace InventorySaving
             Weapons w = new Weapons();
             w.slot1 = player.Player.inventory.getItem(0, 0);
             w.slot2 = player.Player.inventory.getItem(1, 0);
-            w.Slot1 = new Item(w.slot1.Item.ItemID, 1, 100, (byte[])((object)w.slot1.Item.Metadata).DeepClone());
-            w.Slot2 = new Item(w.slot2.Item.ItemID, 1, 100, (byte[])((object)w.slot2.Item.Metadata).DeepClone());
+
+            if (w.slot1 != null)
+                w.Slot1 = new Item(w.slot1.Item.ItemID, 1, 100, w.slot1.Item.Metadata);
+            else
+                w.Slot1 = null;
+            if (w.slot2 != null)
+                w.Slot2 = new Item(w.slot2.Item.ItemID, 1, 100, w.slot2.Item.Metadata);
+            else
+                w.Slot2 = null;
 
             if (!Plugin.SavedWeapons.ContainsKey(player.CSteamID))
             {
@@ -57,11 +64,12 @@ namespace InventorySaving
 
         public bool ContainsWeaponData(UnturnedPlayer player)
         {
-            if (!Plugin.SavedWeapons.ContainsKey(player.CSteamID))
-            {
-                return false;
-            }
-            return true;
+            return Plugin.SavedWeapons.ContainsKey(player.CSteamID);
+        }
+
+        public Item ReturnItem(Item i)
+        {
+            return new Item(i.ItemID, 1, 100, i.Metadata);
         }
 
         /*
