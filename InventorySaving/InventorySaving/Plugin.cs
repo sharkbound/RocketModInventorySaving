@@ -12,15 +12,18 @@ using Rocket.Core.Plugins;
 using Rocket.Unturned.Items;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using Rocket.Unturned.Chat;
 
 namespace InventorySaving
 {
     class Plugin : RocketPlugin<Config>
     {
         public static Dictionary<CSteamID, Weapons> SavedWeapons = new Dictionary<CSteamID, Weapons>();
+        public static Plugin Instance;
 
         protected override void Load()
         {
+            Instance = this;
             Logger.Log("InventorySaving has loaded!");
         }
 
@@ -72,6 +75,37 @@ namespace InventorySaving
             return new Item(i.ItemID, 1, 100, i.Metadata);
         }
 
+        public void RestoreItems(UnturnedPlayer Player)
+        {
+             if (Plugin.SavedWeapons[Player.CSteamID].Slot1 != null)
+             {
+                  Player.Inventory.tryAddItem(ReturnItem(Plugin.SavedWeapons[Player.CSteamID].Slot1), true);
+             }
+             if (Plugin.SavedWeapons[Player.CSteamID].Slot2 != null)
+             {
+                  Player.Inventory.tryAddItem(ReturnItem(Plugin.SavedWeapons[Player.CSteamID].Slot2), true);
+             }
+        }
+
+        public void RemoveWeaponsFromEquiptedSlots(UnturnedPlayer Player)
+        {
+            if (Plugin.Instance.Configuration.Instance.RemoveWeaponsOnInvLoad)
+            {
+                SDG.Unturned.ItemJar item;
+                item = Player.Inventory.getItem(0, 0);
+                if (item != null)
+                {
+                    Player.Inventory.removeItem(0, 0);
+                }
+
+                item = Player.Inventory.getItem(1, 0);
+                if (item != null)
+                {
+                    Player.Inventory.removeItem(1, 0);
+                }
+            }
+        }
+
         /*
             Unturned weapon metadata structure.
             metadata[0] = sight id byte 1
@@ -94,20 +128,5 @@ namespace InventorySaving
             metadata[16] = barrel durability
             metadata[17] = magazine durability
         */
-    }
-
-    public static class ExtensionMethods
-    {
-        // Deep clone
-        public static T DeepClone<T>(this T a)
-        {
-            using (MemoryStream stream = new MemoryStream())
-            {
-                BinaryFormatter formatter = new BinaryFormatter();
-                formatter.Serialize(stream, a);
-                stream.Position = 0;
-                return (T)formatter.Deserialize(stream);
-            }
-        }
     }
 }

@@ -42,15 +42,8 @@ namespace InventorySaving
             {
                 if (Weapons.ContainsWeaponData(Player))
                 {
-                    if (Plugin.SavedWeapons[Player.CSteamID].Slot1 != null)
-                    {
-                        Player.Inventory.tryAddItem(Weapons.ReturnItem(Plugin.SavedWeapons[Player.CSteamID].Slot1), true);
-                    }
-                    if (Plugin.SavedWeapons[Player.CSteamID].Slot2 != null)
-                    {
-                        Player.Inventory.tryAddItem(Weapons.ReturnItem(Plugin.SavedWeapons[Player.CSteamID].Slot2), true);
-                    }
-
+                    Weapons.RemoveWeaponsFromEquiptedSlots(Player);
+                    Weapons.RestoreItems(Player);
                     UnturnedChat.Say(caller, "Your inventory has been restored!");
                 }
                 else

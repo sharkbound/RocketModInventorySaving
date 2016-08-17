@@ -9,10 +9,10 @@ namespace InventorySaving
 {
     public class Config : IRocketPluginConfiguration
     {
-        public string filler;
+        public bool RemoveWeaponsOnInvLoad;
         public void LoadDefaults()
         {
-            filler = "filler";
+            RemoveWeaponsOnInvLoad = true;
         }
     }
 }
