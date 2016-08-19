@@ -87,6 +87,18 @@ namespace InventorySaving
              }
         }
 
+        public void RestoreItemsReverseOrder(UnturnedPlayer Player)
+        {
+            if (Plugin.SavedWeapons[Player.CSteamID].Slot2 != null)
+            {
+                Player.Inventory.tryAddItem(ReturnItem(Plugin.SavedWeapons[Player.CSteamID].Slot2), true);
+            }
+            if (Plugin.SavedWeapons[Player.CSteamID].Slot1 != null)
+            {
+                Player.Inventory.tryAddItem(ReturnItem(Plugin.SavedWeapons[Player.CSteamID].Slot1), true);
+            }
+        }
+
         public void RemoveWeaponsFromEquiptedSlots(UnturnedPlayer Player)
         {
             if (Plugin.Instance.Configuration.Instance.RemoveWeaponsOnInvLoad)

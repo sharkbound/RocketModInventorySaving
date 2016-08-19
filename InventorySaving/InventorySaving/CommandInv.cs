@@ -35,18 +35,23 @@ namespace InventorySaving
             UnturnedPlayer Player = (UnturnedPlayer)caller;
             if (command[0].ToLower() == "save" || command[0].ToLower() == "s")
             {
-                //Weapons.SaveWeaponData(Player);
+                int page = Player.Player.equipment.equippedPage;
+
                 Weapons.SaveWeaponData(Player);
                 Weapons.RemoveWeaponsFromEquiptedSlots(Player);
-                Weapons.RestoreItems(Player);
+                restoreItemsChooseOrder(page, Player);
+
                 UnturnedChat.Say(caller, "Inventory Saved!");
             }
             else if (command[0].ToLower() == "load" || command[0].ToLower() == "l")
             {
                 if (Weapons.ContainsWeaponData(Player))
                 {
+                    int page = Player.Player.equipment.equippedPage;
+
                     Weapons.RemoveWeaponsFromEquiptedSlots(Player);
-                    Weapons.RestoreItems(Player);
+                    restoreItemsChooseOrder(page, Player);
+
                     UnturnedChat.Say(caller, "Your inventory has been restored!");
                 }
                 else
@@ -79,6 +84,18 @@ namespace InventorySaving
         public string Syntax
         {
             get { return "[ save or s | load or l ]"; }
+        }
+
+        void restoreItemsChooseOrder(int page, UnturnedPlayer P)
+        {
+            if (page == 1)
+            {
+                Weapons.RestoreItemsReverseOrder(P);
+            }
+            else
+            {
+                Weapons.RestoreItems(P);
+            }
         }
     }
 }
