@@ -35,7 +35,10 @@ namespace InventorySaving
             UnturnedPlayer Player = (UnturnedPlayer)caller;
             if (command[0].ToLower() == "save" || command[0].ToLower() == "s")
             {
+                //Weapons.SaveWeaponData(Player);
                 Weapons.SaveWeaponData(Player);
+                Weapons.RemoveWeaponsFromEquiptedSlots(Player);
+                Weapons.RestoreItems(Player);
                 UnturnedChat.Say(caller, "Inventory Saved!");
             }
             else if (command[0].ToLower() == "load" || command[0].ToLower() == "l")
