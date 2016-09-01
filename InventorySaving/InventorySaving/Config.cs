@@ -9,10 +9,10 @@ namespace InventorySaving
 {
     public class Config : IRocketPluginConfiguration
     {
-        public bool RemoveWeaponsOnInvLoad;
+        public bool RestoreWeaponsOnPlayerRevive;
         public void LoadDefaults()
         {
-            RemoveWeaponsOnInvLoad = true;
+            RestoreWeaponsOnPlayerRevive = true;
         }
     }
 }

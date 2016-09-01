@@ -12,7 +12,6 @@ namespace InventorySaving
 {
     class CommandInv : IRocketCommand
     {
-        Weapons Weapons = new Weapons();
         string usage = "Incorrect command usage, Correct usage: /inv [ save or s | load or l ]";
         public List<string> Aliases
         {
@@ -37,20 +36,20 @@ namespace InventorySaving
             {
                 int page = Player.Player.equipment.equippedPage;
 
-                Weapons.SaveWeaponData(Player);
-                Weapons.RemoveWeaponsFromEquiptedSlots(Player);
-                restoreItemsChooseOrder(page, Player);
+                Plugin.WeaponsInstance.SaveWeaponData(Player);
+                Plugin.WeaponsInstance.RemoveWeaponsFromEquiptedSlots(Player);
+                Plugin.WeaponsInstance.restoreItemsChooseOrder(page, Player);
 
                 UnturnedChat.Say(caller, "Inventory Saved!");
             }
             else if (command[0].ToLower() == "load" || command[0].ToLower() == "l")
             {
-                if (Weapons.ContainsWeaponData(Player))
+                if (Plugin.WeaponsInstance.ContainsWeaponData(Player))
                 {
                     int page = Player.Player.equipment.equippedPage;
 
-                    Weapons.RemoveWeaponsFromEquiptedSlots(Player);
-                    restoreItemsChooseOrder(page, Player);
+                    Plugin.WeaponsInstance.RemoveWeaponsFromEquiptedSlots(Player);
+                    Plugin.WeaponsInstance.restoreItemsChooseOrder(page, Player);
 
                     UnturnedChat.Say(caller, "Your inventory has been restored!");
                 }
@@ -84,18 +83,6 @@ namespace InventorySaving
         public string Syntax
         {
             get { return "[ save or s | load or l ]"; }
-        }
-
-        void restoreItemsChooseOrder(int page, UnturnedPlayer P)
-        {
-            if (page == 1)
-            {
-                Weapons.RestoreItemsReverseOrder(P);
-            }
-            else
-            {
-                Weapons.RestoreItems(P);
-            }
         }
     }
 }
