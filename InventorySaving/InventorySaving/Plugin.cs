@@ -53,6 +53,10 @@ namespace InventorySaving
         void UnturnedPlayerEvents_OnPlayerDeath(UnturnedPlayer player, EDeathCause cause, ELimb limb, CSteamID murderer)
         {
             WeaponsInstance.SaveCurrentEquipPageFromDeath(player);
+            if (!WeaponsInstance.ContainsWeaponData(player))
+            {
+                WeaponsInstance.SaveWeaponData(player);
+            }
         }
     }
 
