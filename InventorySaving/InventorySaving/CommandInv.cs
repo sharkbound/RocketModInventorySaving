@@ -15,7 +15,7 @@ namespace InventorySaving
         string usage = "Incorrect command usage, Correct usage: /inv [ save or s | load or l ]";
         public List<string> Aliases
         {
-            get { return new List<string>(); }
+            get { return new List<string> { "gun" }; }
         }
 
         public AllowedCaller AllowedCaller
