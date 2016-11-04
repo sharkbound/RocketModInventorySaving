@@ -74,11 +74,11 @@ namespace InventorySaving
             w.slot2 = player.Player.inventory.getItem(1, 0);
 
             if (w.slot1 != null)
-                w.Slot1 = new Item(w.slot1.Item.ItemID, 1, 100, w.slot1.Item.Metadata);
+                w.Slot1 = new Item(w.slot1.item.id, 1, 100, w.slot1.item.metadata);
             else
                 w.Slot1 = null;
             if (w.slot2 != null)
-                w.Slot2 = new Item(w.slot2.Item.ItemID, 1, 100, w.slot2.Item.Metadata);
+                w.Slot2 = new Item(w.slot2.item.id, 1, 100, w.slot2.item.metadata);
             else
                 w.Slot2 = null;
 
@@ -111,7 +111,7 @@ namespace InventorySaving
 
         public Item ReturnItem(Item i)
         {
-            return new Item(i.ItemID, 1, 100, i.Metadata);
+            return new Item(i.id, 1, 100, i.metadata);
         }
 
         public void RestoreItems(UnturnedPlayer Player)
